@@ -1,0 +1,95 @@
+name: strawberry-kyu
+base: core24
+version: '1.2.13'
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
+summary: A music player and collection organizer
+description: |
+  Strawberry is a music player and music collection organizer. It is aimed at music collectors and audiophiles.
+  Strawberry is free software released under GPL. It's written in C++ using the Qt framework and GStreamer. 
+grade: stable
+confinement: strict
+
+apps:
+  strawberry:
+    command: usr/bin/strawberry
+    desktop: usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
+    common-id: org.strawberrymusicplayer.strawberry
+    extensions: [kde-neon-6]
+    plugs:
+      - home
+      - removable-media
+      - mount-observe
+    slots:
+      - mpris
+
+plugs:
+  kvantum:
+    content: kvantum
+    interface: content
+    target: $SNAP/kvantum
+    default-provider: qt-style-kvantum
+
+environment:
+  QT_PLUGIN_PATH: $SNAP/kvantum/usr/lib/x86_64-linux-gnu/qt6/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}
+
+layout:
+  /usr/share/color-schemes:
+    symlink: $SNAP/kvantum/usr/share/color-schemes
+  /usr/share/Kvantum:
+    symlink: $SNAP/kvantum/usr/share/Kvantum
+
+package-repositories:
+  - type: apt
+    url: https://ppa.launchpadcontent.net/jonaski/strawberry/ubuntu
+    suites: [noble]
+    components: [main]
+    architectures: [arm64, amd64]
+    key-id: BE5ED0F9261CAAD9A1E5B1A4CD6289E999EA819D
+
+parts:
+  strawberry:
+    plugin: nil
+    stage-packages:
+      - strawberry
+    override-stage: |
+      craftctl default
+      sed -i 's|Name=Strawberry|Name=Strawberry [NyKyu]|' $CRAFT_STAGE/usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
+      sed -i 's|Exec=strawberry %U|Exec=${SNAP}/usr/bin/strawberry %U|' $CRAFT_STAGE/usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
+      sed -i 's|TryExec=strawberry|TryExec=${SNAP}/usr/bin/strawberry|' $CRAFT_STAGE/usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
+      sed -i 's|Icon=strawberry|Icon=${SNAP}/usr/share/icons/hicolor/128x128/apps/strawberry.png|' $CRAFT_STAGE/usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
+    prime:
+      - usr/bin/strawberry
+      - usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
+      - usr/share/icons/hicolor/*/apps/strawberry.png
+
+  dependencies:
+    after: [strawberry]
+    plugin: nil
+    stage-packages:
+      - libcdio19t64
+      - libebur128-1
+      - libfftw3-double3
+      - libkdsingleapplication-qt6-1.0
+      - libgpod4t64
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-plugins-ugly
+      - gstreamer1.0-libav
+    prime:
+      - usr/lib/x86_64-linux-gnu/libcdio.so*
+      - usr/lib/x86_64-linux-gnu/libebur128.so*
+      - usr/lib/x86_64-linux-gnu/libfftw3.so*
+      - usr/lib/x86_64-linux-gnu/libfftw3_omp.so*
+      - usr/lib/x86_64-linux-gnu/libfftw3_threads.so*
+      - usr/lib/x86_64-linux-gnu/libgpod.so*
+      - usr/lib/x86_64-linux-gnu/libkdsingleapplication-qt6.so*
+      - usr/lib/x86_64-linux-gnu/gstreamer-1.0
+      - usr/share/gstreamer-1.0
+      - usr/share/locale
