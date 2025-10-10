@@ -16,7 +16,7 @@ grade: stable
 confinement: strict
 
 apps:
-  strawberry:
+  strawberry-kyu:
     command: usr/bin/strawberry
     desktop: usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
     common-id: org.strawberrymusicplayer.strawberry
