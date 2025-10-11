@@ -46,7 +46,7 @@ slots:
     name: strawberry
 
 environment:
-  QT_PLUGIN_PATH: $SNAP/kvantum/usr/lib/x86_64-linux-gnu/qt6/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}
+  QT_PLUGIN_PATH: $SNAP/kvantum/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}
 
 layout:
   /usr/share/color-schemes:
@@ -93,13 +93,13 @@ parts:
       - gstreamer1.0-plugins-ugly
       - gstreamer1.0-libav
     prime:
-      - usr/lib/x86_64-linux-gnu/libcdio.so*
-      - usr/lib/x86_64-linux-gnu/libebur128.so*
-      - usr/lib/x86_64-linux-gnu/libfftw3.so*
-      - usr/lib/x86_64-linux-gnu/libfftw3_omp.so*
-      - usr/lib/x86_64-linux-gnu/libfftw3_threads.so*
-      - usr/lib/x86_64-linux-gnu/libgpod.so*
-      - usr/lib/x86_64-linux-gnu/libkdsingleapplication-qt6.so*
-      - usr/lib/x86_64-linux-gnu/gstreamer-1.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libcdio.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libebur128.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfftw3.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfftw3_omp.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfftw3_threads.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libgpod.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libkdsingleapplication-qt6.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/gstreamer-1.0
       - usr/share/gstreamer-1.0
       - usr/share/locale
