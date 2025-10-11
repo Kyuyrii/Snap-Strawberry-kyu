@@ -20,6 +20,8 @@ apps:
     command: usr/bin/strawberry
     desktop: usr/share/applications/org.strawberrymusicplayer.strawberry.desktop
     common-id: org.strawberrymusicplayer.strawberry
+    environment:
+      QT_QPA_PLATFORMTHEME: xdgdesktopportal
     extensions: [kde-neon-6]
     plugs:
       - home
