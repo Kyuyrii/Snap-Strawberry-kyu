@@ -37,14 +37,6 @@ plugs:
     target: $SNAP/kvantum
     default-provider: qt-style-kvantum
 
-slots:
-  strawberry:
-    interface: dbus
-    bus: session
-    name: org.strawberrymusicplayer.strawberry
-  mpris:
-    name: strawberry
-
 environment:
   QT_PLUGIN_PATH: $SNAP/kvantum/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}
 
