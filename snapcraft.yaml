@@ -11,7 +11,7 @@ platforms:
 summary: A music player and collection organizer
 description: |
   Strawberry is a music player and music collection organizer. It is aimed at music collectors and audiophiles.
-  Strawberry is free software released under GPL. It's written in C++ using the Qt framework and GStreamer. 
+  Strawberry is free software released under GPL. It's written in C++ using the Qt framework and GStreamer.
 grade: stable
 confinement: strict
 icon: strawberry.png
@@ -23,28 +23,19 @@ apps:
     common-id: org.strawberrymusicplayer.strawberry
     environment:
       QT_QPA_PLATFORMTHEME: xdgdesktopportal
-      LD_LIBRARY_PATH: $SNAP/lxqt-support-core24/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$LD_LIBRARY_PATH
-      QT_PLUGIN_PATH: $SNAP/lxqt-support-core24/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/plugins:$QT_PLUGIN_PATH
+      LD_LIBRARY_PATH: $SNAP/lxqt-support/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$LD_LIBRARY_PATH
+      QT_PLUGIN_PATH: $SNAP/lxqt-support/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/qt6/plugins:$QT_PLUGIN_PATH
     extensions: [kde-neon-6]
     plugs:
       - home
       - removable-media
       - mount-observe
-    slots:
-      - mpris
+      - udisks2
 
-plugs:
-  lxqt-support-core24:
-    content: lxqt-support-core24
-    interface: content
-    target: $SNAP/lxqt-support-core24
-    default-provider: lxqt-support-core24
-
-layout:
-  /usr/share/color-schemes:
-    symlink: $SNAP/lxqt-support-core24/usr/share/color-schemes
-  /usr/share/Kvantum:
-    symlink: $SNAP/lxqt-support-core24/usr/share/Kvantum
+slots:
+  mpris:
+    interface: mpris
+    name: strawberry
 
 package-repositories:
   - type: apt
