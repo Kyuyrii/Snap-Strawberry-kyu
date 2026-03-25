@@ -31,11 +31,7 @@ apps:
       - removable-media
       - mount-observe
       - udisks2
-
-slots:
-  mpris:
-    interface: mpris
-    name: strawberry
+    slots: [mpris]
 
 package-repositories:
   - type: apt
