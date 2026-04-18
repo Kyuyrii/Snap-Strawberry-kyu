@@ -33,6 +33,12 @@ apps:
       - udisks2
     slots: [mpris]
 
+slots:
+  strawberry:
+    interface: dbus
+    bus: session
+    name: org.mpris.MediaPlayer2.strawberry
+
 package-repositories:
   - type: apt
     url: https://ppa.launchpadcontent.net/jonaski/strawberry/ubuntu
