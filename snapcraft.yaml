@@ -77,6 +77,7 @@ parts:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libfftw3_threads.so*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libgpod.so*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libkdsingleapplication-qt6.so*
+      - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libuchardet.so*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/gstreamer-1.0
       - usr/share/gstreamer-1.0
       - usr/share/locale
