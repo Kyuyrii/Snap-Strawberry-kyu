@@ -69,6 +69,7 @@ parts:
       - gstreamer1.0-plugins-bad
       - gstreamer1.0-plugins-ugly
       - gstreamer1.0-libav
+      - libuchardet0
     prime:
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libcdio.so*
       - usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libebur128.so*
